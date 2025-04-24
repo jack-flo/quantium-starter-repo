@@ -29,7 +29,7 @@ for entry in pinkMorsel.values:
     regions.append(region)
 
 # create objects to store array values
-d = {'date': dates, 'sales': sales, 'region': region}
+d = {'date': dates, 'sales': sales, 'region': regions}
 filteredDf = pd.DataFrame(data=d)
 # turn into CSV
 filteredDf.to_csv('formattedDataset.csv', index=False)
