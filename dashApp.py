@@ -2,7 +2,7 @@
 
 import plotly.express as px
 import pandas as pd
-from dash import Dash, html, dcc, Input, Output
+from dash import Dash, html, dcc, Input, Output, callback
 
 app = Dash()
 
@@ -21,7 +21,7 @@ app.layout = html.Div(children=[
     html.H2(children='Were sales higher before or after the Pink Morsel price increase on the 15th of January, 2021?'),
 
     dcc.Graph(
-        id='Sales Graph',
+        id='sales-graph',
         figure=fig
     ),
     html.Div(
@@ -51,7 +51,7 @@ app.layout = html.Div(children=[
 
 
 @app.callback(
-    Output('Sales Graph', 'figure'),
+    Output('sales-graph', 'figure'),
     Input('radio-options', 'value')
 )
 def updateGraph(region):
@@ -72,4 +72,5 @@ def updateGraph(region):
     return fig
 
 
-app.run(debug=True)
+if __name__ == "__main__":
+    app.run(debug=True)
